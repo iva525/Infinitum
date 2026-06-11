@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Профиль</title>
+</head>
+<body style="background:#0f1117;color:white;font-family:Arial">
+
+<h1>Добро пожаловать!</h1>
+
+<p id="user"></p>
+
+<button onclick="logout()">
+Выйти
+</button>
+
+<script>
+
+document.getElementById("user").innerText =
+"Пользователь: " +
+localStorage.getItem("username");
+
+function logout(){
+
+localStorage.removeItem("username");
+localStorage.removeItem("admin");
+
+location.href="index.html";
+
+}
+
+</script>
+
+</body>
+</html>
