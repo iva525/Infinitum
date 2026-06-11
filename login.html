@@ -95,26 +95,32 @@ placeholder="Пароль">
 function login(){
 
 let user =
-document.getElementById("user").value;
+document.getElementById("user").value.trim();
 
 let pass =
-document.getElementById("pass").value;
+document.getElementById("pass").value.trim();
+
+if(!user || !pass){
+document.getElementById("error").innerText =
+"Введите логин и пароль";
+return;
+}
 
 if(user === "adm" && pass === "12345"){
 
 localStorage.setItem("admin","true");
+localStorage.setItem("username",user);
 
 window.location.href="admin.html";
 
 }else{
 
-document.getElementById("error").innerText =
-"Неверный логин или пароль";
+localStorage.setItem("username",user);
+window.location.href="profile.html";
 
 }
 
 }
-
 </script>
 
 </body>
