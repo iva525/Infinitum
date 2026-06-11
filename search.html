@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinitum Search</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#020617);
+min-height:100vh;
+color:white;
+overflow-x:hidden;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+}
+
+.logo{
+font-size:36px;
+font-weight:700;
+background:linear-gradient(90deg,#60a5fa,#a855f7);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.profile{
+background:#1e293b;
+padding:12px 20px;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+}
+
+.profile:hover{
+transform:translateY(-3px);
+}
+
+.main{
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+height:70vh;
+}
+
+.search-box{
+width:90%;
+max-width:900px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+padding:15px;
+border-radius:20px;
+display:flex;
+gap:10px;
+box-shadow:0 0 40px rgba(0,0,0,.4);
+}
+
+.search-box input{
+flex:1;
+padding:18px;
+font-size:18px;
+background:transparent;
+border:none;
+outline:none;
+color:white;
+}
+
+.search-btn{
+padding:18px 25px;
+border:none;
+border-radius:14px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.google{
+background:#2563eb;
+color:white;
+}
+
+.yandex{
+background:#f97316;
+color:white;
+}
+
+.ai{
+background:#7c3aed;
+color:white;
+}
+
+.quick{
+display:flex;
+gap:15px;
+margin-top:30px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.quick div{
+background:#1e293b;
+padding:15px 25px;
+border-radius:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.quick div:hover{
+transform:translateY(-5px);
+}
+
+.history{
+margin-top:40px;
+width:90%;
+max-width:900px;
+}
+
+.history h2{
+margin-bottom:15px;
+}
+
+.item{
+background:#1e293b;
+padding:15px;
+margin-bottom:10px;
+border-radius:12px;
+cursor:pointer;
+}
+
+footer{
+position:fixed;
+bottom:0;
+width:100%;
+padding:15px;
+text-align:center;
+background:#0f172a;
+color:#94a3b8;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">Infinitum</div>
+
+<div class="profile"
+onclick="location.href='profile.html'">
+Профиль
+</div>
+</header>
+
+<div class="main">
+
+<div class="search-box">
+
+<input
+id="query"
+placeholder="Искать в интернете..."
+>
+
+<button
+class="search-btn google"
+onclick="googleSearch()">
+Google
+</button>
+
+<button
+class="search-btn yandex"
+onclick="yandexSearch()">
+Yandex
+</button>
+
+</div>
+
+<div class="quick">
+
+<div onclick="quick('Новости')">
+Новости
+</div>
+
+<div onclick="quick('Игры')">
+Игры
+</div>
+
+<div onclick="quick('Видео')">
+Видео
+</div>
+
+<div onclick="quick('Картинки')">
+Картинки
+</div>
+
+<div onclick="quick('Музыка')">
+Музыка
+</div>
+
+</div>
+
+<div class="history">
+
+<h2>История поиска</h2>
+
+<div id="historyList"></div>
+
+</div>
+
+</div>
+
+<footer>
+Infinitum Search Engine v1.0
+</footer>
+
+<script>
+
+function saveHistory(q){
+
+if(!q) return;
+
+let arr =
+JSON.parse(
+localStorage.getItem("searchHistory")
+|| "[]"
+);
+
+arr.unshift(q);
+
+arr = [...new Set(arr)];
+
+arr = arr.slice(0,10);
+
+localStorage.setItem(
+"searchHistory",
+JSON.stringify(arr)
+);
+
+renderHistory();
+
+}
+
+function renderHistory(){
+
+let arr =
+JSON.parse(
+localStorage.getItem("searchHistory")
+|| "[]"
+);
+
+let html = "";
+
+arr.forEach(item=>{
+
+html += `
+<div class="item"
+onclick="searchAgain('${item}')">
+${item}
+</div>
+`;
+
+});
+
+document.getElementById(
+"historyList"
+).innerHTML = html;
+
+}
+
+function searchAgain(text){
+
+document.getElementById(
+"query"
+).value = text;
+
+}
+
+function googleSearch(){
+
+let q =
+document.getElementById("query").value;
+
+saveHistory(q);
+
+window.open(
+"https://www.google.com/search?q="
++
+encodeURIComponent(q),
+"_blank"
+);
+
+}
+
+function yandexSearch(){
+
+let q =
+document.getElementById("query").value;
+
+saveHistory(q);
+
+window.open(
+"https://yandex.ru/search/?text="
++
+encodeURIComponent(q),
+"_blank"
+);
+
+}
+
+function quick(text){
+
+document.getElementById(
+"query"
+).value = text;
+
+}
+
+document
+.getElementById("query")
+.addEventListener("keydown",e=>{
+
+if(e.key==="Enter"){
+googleSearch();
+}
+
+});
+
+renderHistory();
+
+</script>
+
+</body>
+</html>
