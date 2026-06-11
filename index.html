@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Infinitum</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f1117;
+color:white;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top,#1f2937,#0f1117);
+z-index:-1;
+}
+
+.container{
+text-align:center;
+width:90%;
+max-width:900px;
+}
+
+.logo{
+font-size:80px;
+font-weight:bold;
+background:linear-gradient(90deg,#4f46e5,#06b6d4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#94a3b8;
+margin-bottom:40px;
+}
+
+.search-box{
+display:flex;
+gap:10px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.search-box input{
+width:70%;
+max-width:700px;
+padding:18px;
+border:none;
+border-radius:15px;
+background:#1e293b;
+color:white;
+font-size:18px;
+}
+
+.btn{
+padding:18px 25px;
+border:none;
+border-radius:15px;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+transition:.3s;
+}
+
+.google{
+background:#2563eb;
+color:white;
+}
+
+.yandex{
+background:#f97316;
+color:white;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.menu{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.card{
+background:#1e293b;
+padding:15px 25px;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.login-btn{
+position:absolute;
+top:20px;
+right:20px;
+background:#4f46e5;
+padding:12px 20px;
+border-radius:10px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<div class="login-btn" onclick="location.href='login.html'">
+Вход
+</div>
+
+<div class="container">
+
+<div class="logo">Infinitum</div>
+
+<div class="subtitle">
+Поиск по всему интернету
+</div>
+
+<div class="search-box">
+
+<input
+id="query"
+placeholder="Введите запрос..."
+>
+
+<button class="btn google"
+onclick="googleSearch()">
+Google
+</button>
+
+<button class="btn yandex"
+onclick="yandexSearch()">
+Yandex
+</button>
+
+</div>
+
+<div class="menu">
+
+<div class="card">
+Новости
+</div>
+
+<div class="card">
+Видео
+</div>
+
+<div class="card">
+Картинки
+</div>
+
+<div class="card">
+ИИ
+</div>
+
+<div class="card">
+Карты
+</div>
+
+<div class="card">
+Профиль
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function googleSearch(){
+
+let q =
+document.getElementById("query").value;
+
+window.open(
+"https://www.google.com/search?q="+
+encodeURIComponent(q)
+);
+
+}
+
+function yandexSearch(){
+
+let q =
+document.getElementById("query").value;
+
+window.open(
+"https://yandex.ru/search/?text="+
+encodeURIComponent(q)
+);
+
+}
+
+</script>
+
+</body>
+</html>
