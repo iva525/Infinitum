@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings - Infinitum</title>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/settings.css">
+
+</head>
+<body>
+
+<div class="settings-container">
+
+<h1>Настройки</h1>
+
+<div class="card">
+
+<h2>Имя пользователя</h2>
+
+<input
+id="username"
+placeholder="Введите имя">
+
+<button onclick="saveUsername()">
+Сохранить
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>Тема</h2>
+
+<button onclick="setDarkTheme()">
+Тёмная
+</button>
+
+<button onclick="setLightTheme()">
+Светлая
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>История поиска</h2>
+
+<button onclick="clearSearchHistory()">
+Очистить
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>Назад</h2>
+
+<button onclick="location.href='profile.html'">
+Профиль
+</button>
+
+</div>
+
+</div>
+
+<script src="js/settings.js"></script>
+
+</body>
+</html>
