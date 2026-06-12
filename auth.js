@@ -114,3 +114,4 @@ function logout(){
     location.href = "index.html";
 
 }
+js/app.js
