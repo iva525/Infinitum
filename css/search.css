@@ -1,41 +1,87 @@
-.search-container{
-    max-width:1000px;
-    margin:80px auto;
-    padding:20px;
+function saveSearch(query){
+
+    let history =
+    JSON.parse(
+        localStorage.getItem(
+            "searchHistory"
+        ) || "[]"
+    );
+
+    history.unshift(query);
+
+    history = history.slice(0,50);
+
+    localStorage.setItem(
+        "searchHistory",
+        JSON.stringify(history)
+    );
+
 }
 
-.search-box{
-    display:flex;
-    gap:10px;
-    background:#1f2937;
-    padding:15px;
-    border-radius:20px;
+function googleSearch(){
+
+    let query =
+    document.getElementById(
+        "query"
+    ).value.trim();
+
+    if(!query) return;
+
+    saveSearch(query);
+
+    localStorage.setItem(
+        "lastSearch",
+        query
+    );
+
+    window.open(
+        "https://www.google.com/search?q=" +
+        encodeURIComponent(query),
+        "_blank"
+    );
+
 }
 
-.search-box input{
-    flex:1;
-    border:none;
-    outline:none;
-    background:transparent;
-    color:white;
-    font-size:18px;
+function yandexSearch(){
+
+    let query =
+    document.getElementById(
+        "query"
+    ).value.trim();
+
+    if(!query) return;
+
+    saveSearch(query);
+
+    localStorage.setItem(
+        "lastSearch",
+        query
+    );
+
+    window.open(
+        "https://yandex.ru/search/?text=" +
+        encodeURIComponent(query),
+        "_blank"
+    );
+
 }
 
-.search-btn{
-    padding:12px 20px;
-    border:none;
-    border-radius:12px;
-    background:#2563eb;
-    color:white;
-}
+window.onload = function(){
 
-.history-item{
-    background:#1f2937;
-    margin-top:10px;
-    padding:12px;
-    border-radius:12px;
-}
+    let lastSearch =
+    localStorage.getItem(
+        "lastSearch"
+    );
 
-.history-item:hover{
-    background:#374151;
-}
+    if(
+        lastSearch &&
+        document.getElementById(
+            "query"
+        )
+    ){
+        document.getElementById(
+            "query"
+        ).value = lastSearch;
+    }
+
+};
