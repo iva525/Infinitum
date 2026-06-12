@@ -22,3 +22,4 @@ function isAdmin(){
     ) === "true";
 
 }
+js/app.js
