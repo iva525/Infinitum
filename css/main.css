@@ -1,0 +1,52 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    font-family:Segoe UI,sans-serif;
+    min-height:100vh;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+.topbar{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+    background:#111827;
+}
+
+.logo{
+    font-size:32px;
+    font-weight:700;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:#1f2937;
+    border-radius:20px;
+    padding:20px;
+}
