@@ -130,7 +130,41 @@ cursor:pointer;
 
 <body>
   <header class="topbar">
+<script>
 
+function updateAuthButton(){
+
+    const user =
+    localStorage.getItem("username");
+
+    const auth =
+    document.getElementById("authButtons");
+
+    if(!auth) return;
+
+    if(user){
+
+        auth.innerHTML = `
+        <button onclick="location.href='profile.html'">
+            ${user}
+        </button>
+        `;
+
+    }else{
+
+        auth.innerHTML = `
+        <button onclick="location.href='login.html'">
+            Войти
+        </button>
+        `;
+
+    }
+
+}
+
+updateAuthButton();
+
+</script>
 <div class="logo">
 Infinitum
 </div>
@@ -229,10 +263,7 @@ location.href =
 
 <div class="bg"></div>
 
-<div class="login-btn" onclick="location.href='login.html'">
-Вход
-</div>
-
+<div id="authButtons"></div>
 <div class="container">
 
 <div class="logo">Infinitum</div>
