@@ -74,3 +74,4 @@ function loadHistory(){
 }
 
 window.onload = loadHistory;
+js/app.js
