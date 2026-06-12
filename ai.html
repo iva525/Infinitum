@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinitum AI</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+header{
+padding:20px;
+background:#111827;
+font-size:28px;
+font-weight:bold;
+}
+
+.chat{
+flex:1;
+padding:20px;
+overflow-y:auto;
+}
+
+.msg{
+padding:15px;
+margin-bottom:10px;
+border-radius:15px;
+max-width:80%;
+}
+
+.user{
+background:#2563eb;
+margin-left:auto;
+}
+
+.ai{
+background:#1f2937;
+}
+
+.bottom{
+display:flex;
+padding:15px;
+background:#111827;
+}
+
+input{
+flex:1;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#1f2937;
+color:white;
+}
+
+button{
+margin-left:10px;
+padding:15px 25px;
+border:none;
+border-radius:12px;
+background:#7c3aed;
+color:white;
+cursor:pointer;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+Infinitum AI
+</header>
+
+<div class="chat" id="chat">
+
+<div class="msg ai">
+Привет! Я Infinitum AI.
+</div>
+
+</div>
+
+<div class="bottom">
+
+<input
+id="message"
+placeholder="Напишите сообщение..."
+>
+
+<button onclick="send()">
+Отправить
+</button>
+
+</div>
+
+<script>
+
+function send(){
+
+let input =
+document.getElementById("message");
+
+let text = input.value.trim();
+
+if(!text) return;
+
+let chat =
+document.getElementById("chat");
+
+chat.innerHTML +=
+'<div class="msg user">'+text+'</div>';
+
+chat.innerHTML +=
+'<div class="msg ai">Я пока в разработке.</div>';
+
+input.value="";
+
+chat.scrollTop = chat.scrollHeight;
+
+}
+
+</script>
+
+</body>
+</html>
